@@ -9,6 +9,19 @@ import { Button } from '../../../components/ui/Button';
 import { ShieldCheck, Mail, Lock, Sparkles, Compass } from 'lucide-react';
 
 export default function LoginPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 text-center flex-col gap-3">
+        <div className="w-10 h-10 border-4 border-t-accent border-slate-200 rounded-full animate-spin" />
+        <p className="text-xs text-slate-400 font-bold">Loading Vagana Access Portal...</p>
+      </div>
+    }>
+      <LoginContent />
+    </React.Suspense>
+  );
+}
+
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login, isAuthenticated, role } = useAuthStore();
