@@ -1,0 +1,8 @@
+
+user folder name as vegana sinc ei want files stored to that foler only 
+
+// Upload to Project A's folder
+cloudinary.uploader.upload('image.jpg', { folder: 'project_a' });
+
+// Upload to Project B's folder
+cloudinary.uploader.upload('image.jpg', { folder: 'project_b' });
