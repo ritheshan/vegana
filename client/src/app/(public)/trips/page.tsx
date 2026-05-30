@@ -11,6 +11,19 @@ import { Badge } from '@/components/ui/Badge';
 import { Trip } from '@/types';
 
 export default function SearchPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="py-20 text-center flex flex-col items-center justify-center gap-3">
+        <div className="w-10 h-10 border-4 border-t-accent border-slate-200 rounded-full animate-spin" />
+        <p className="text-xs text-slate-400 font-bold">Loading Adventures Discovery...</p>
+      </div>
+    }>
+      <SearchPageContent />
+    </React.Suspense>
+  );
+}
+
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { trips } = useTripStore();

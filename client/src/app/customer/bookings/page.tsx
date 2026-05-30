@@ -12,6 +12,19 @@ import {
 } from 'lucide-react';
 
 export default function CustomerBookingsPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="py-20 text-center flex flex-col items-center justify-center gap-3">
+        <div className="w-10 h-10 border-4 border-t-accent border-slate-200 rounded-full animate-spin" />
+        <p className="text-xs text-slate-400 font-bold">Loading Bookings Ledger...</p>
+      </div>
+    }>
+      <CustomerBookingsContent />
+    </React.Suspense>
+  );
+}
+
+function CustomerBookingsContent() {
   const searchParams = useSearchParams();
   const { bookings, updateBookingStatus } = useBookingStore();
 
